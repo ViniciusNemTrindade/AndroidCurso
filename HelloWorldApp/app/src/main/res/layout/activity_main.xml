@@ -4,18 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:outlineAmbientShadowColor="#403939"
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/texto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Sou um Desenvolvedor Android!"
+        android:layout_margin="10dp"
         android:background="#113300"
-        android:textColor="#00ffff"
-        android:textSize="37sp"
         android:gravity="center"
-        android:layout_margin="10dp"/>
+        android:text="Sou um Desenvolvedor Android!"
+        android:textColor="#00ffff"
+        android:textSize="37sp" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="147dp"
+        android:backgroundTint="#DA4444"
+        android:onClick="btnPressionar"
+        android:padding="50dp"
+        android:text="Click"
+        android:textAlignment="center"
+        android:textColor="#12988C"
+        android:textSize="30sp" />
+
 
 </RelativeLayout>
