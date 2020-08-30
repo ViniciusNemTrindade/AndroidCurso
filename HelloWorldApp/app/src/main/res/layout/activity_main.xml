@@ -10,14 +10,13 @@
 
     <TextView
         android:id="@+id/texto"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
         android:background="#113300"
         android:gravity="center"
         android:text="Sou um Desenvolvedor Android!"
         android:textColor="#00ffff"
-        android:textSize="37sp" />
+        android:textSize="30sp" />
 
     <Button
         android:id="@+id/button3"
@@ -26,8 +25,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="444dp"
-        android:layout_marginEnd="138dp"
+        android:layout_marginTop="511dp"
+        android:layout_marginEnd="137dp"
         android:backgroundTint="#DA4444"
         android:onClick="btnPressionar"
         android:text="Me pressione!"
@@ -36,12 +35,12 @@
 
     <EditText
         android:id="@+id/editeTexto"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="false"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="false"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="144dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="88dp"
         android:layout_marginEnd="85dp"
         android:ems="10"
         android:hint="Por favor, digite seu nome!"
@@ -49,14 +48,29 @@
 
     <EditText
         android:id="@+id/editeTelefone"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="222dp"
+        android:layout_marginTop="131dp"
+        android:layout_marginEnd="3dp"
         android:ems="10"
         android:hint="Digite aqui seu telefone!"
         android:inputType="phone" />
 
+    <ImageView
+        android:id="@+id/imageChange"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="22dp"
+        android:layout_marginEnd="-6dp"
+        android:layout_marginBottom="220dp"
+        android:scaleType="center"
+        android:src="@drawable/pup" />
 
 </RelativeLayout>
