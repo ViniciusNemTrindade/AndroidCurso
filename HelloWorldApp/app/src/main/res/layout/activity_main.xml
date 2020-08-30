@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/editeNome"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:outlineAmbientShadowColor="#403939"
@@ -23,15 +24,39 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="147dp"
+        android:layout_marginTop="444dp"
+        android:layout_marginEnd="138dp"
         android:backgroundTint="#DA4444"
         android:onClick="btnPressionar"
-        android:padding="50dp"
-        android:text="Click"
+        android:text="Me pressione!"
         android:textAlignment="center"
-        android:textColor="#12988C"
-        android:textSize="30sp" />
+        android:textColor="#12988C" />
+
+    <EditText
+        android:id="@+id/editeTexto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="false"
+        android:layout_alignParentEnd="false"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="144dp"
+        android:layout_marginEnd="85dp"
+        android:ems="10"
+        android:hint="Por favor, digite seu nome!"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/editeTelefone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="291dp"
+        android:ems="10"
+        android:hint="Digite aqui seu telefone!"
+        android:inputType="phone" />
 
 
 </RelativeLayout>

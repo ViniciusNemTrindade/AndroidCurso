@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -14,8 +15,14 @@ public class MainActivity extends AppCompatActivity {
 
         // int resultado = 5 * 3;
         // Log.i("Operacao: ", resultado + "");
-        TextView texto = findViewById(R.id.texto);
-        Log.i("TAG", texto.getText().toString());
+        // TextView texto = findViewById(R.id.texto);
+        // Log.i("TAG", texto.getText().toString());
+//        EditText edtNome = findViewById(R.id.editeTexto);
+//        Log.i("NOME: ", edtNome.getText().toString());
+
+        EditText edtNumTelefone = findViewById(R.id.editeTelefone);
+        Log.i("NÚMERO: ", edtNumTelefone.getText().toString());
+
     }
 
     @Override
