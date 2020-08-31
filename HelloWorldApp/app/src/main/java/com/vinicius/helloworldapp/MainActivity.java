@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                 imgView.setImageResource(R.drawable.venice);
                 flag=false;
             }
-        }
+  }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
