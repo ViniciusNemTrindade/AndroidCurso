@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">UIApp</string>
+    <string name="botaoEsquerdo">Previous Picture</string>
+    <string name="botaoDireito">Next Picture</string>
+    <string name="botaoPlay">Play</string>
 </resources>

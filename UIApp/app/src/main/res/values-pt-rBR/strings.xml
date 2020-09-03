@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="botaoEsquerdo">Foto Anterior</string>
+    <string name="botaoDireito">Próxima Foto</string>
+    <string name="botaoPlay">Executar</string>
+    <string name="app_name">UIApp</string>
+</resources>
