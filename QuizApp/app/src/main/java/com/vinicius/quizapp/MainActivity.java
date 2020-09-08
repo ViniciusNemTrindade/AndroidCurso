@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,7 +22,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 if(view.getId() == R.id.btnVerdade) {
-                    Log.i("Listener", "O botão Verdade! Foi pressionado!");
+                    //Log.i("Listener", "O botão Verdade! Foi pressionado!");
+
+                    Toast meuObjetoToast = Toast.makeText(getApplicationContext(), "O botão Verdade, foi pressionado!", Toast.LENGTH_LONG);
+                    meuObjetoToast.show();
                 }
             }
         };
@@ -36,9 +40,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Log.i("Listener", "O botão Falso! Foi pressionado!");
-
+//                Log.i("Listener", "O botão Falso! Foi pressionado!");
+                Toast meuObjetoToast = Toast.makeText(getApplicationContext(), "O botão Falso, foi pressionado", Toast.LENGTH_LONG);
+                meuObjetoToast.show();
             }
         });
+
+        ModelQuiz model = new ModelQuiz(R.string.p1, true);
+
     }
 }
