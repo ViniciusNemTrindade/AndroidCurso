@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+    <TextView
+        android:id="@+id/txtPergunta"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center|center_horizontal|center_vertical"
+        android:layout_weight="1"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:text="textoPergunta"
+        android:textSize="18sp" />
+
+    <ProgressBar
+        android:id="@+id/quizPB"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center|center_horizontal|center_vertical"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/textResposta"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal|fill_horizontal"
+        android:layout_weight="1"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:text="TextView"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/btnVerdade"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#00e676"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:onClick="onClickBotaoVerdade"
+        android:text="verdade"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/btnFalso"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center|center_horizontal|center_vertical"
+        android:layout_weight="1"
+        android:background="#DF1515"
+        android:gravity="clip_horizontal|center_horizontal|center_vertical"
+        android:onClick="onClickBotaoFalso"
+        android:text="Falso"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp" />
+
+</LinearLayout>

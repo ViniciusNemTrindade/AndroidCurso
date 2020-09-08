@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">QuizApp</string>
+
+    <string name="correto_text">Correto!</string>
+    <string name="incorreto_text">Incorreto!</string>
+    <string name="primeiro_ponto_text">0/10</string>
+    <string name="toast_mensagem_correta">Mandou muito!</string>
+    <string name="toast_mensagem_incorreta">Pisou na bola!</string>
+
+    <string name="p1">O maior porco que se tem registro na história, pesou quase 1,9 tonelada.</string>
+    <string name="p2">Vacas dão mais leite quando ouvem música.</string>
+    <string name="p3">A primeira máquina de escrever era chamada de \"Piano literário\"</string>
+    <string name="p4">Os chineses inventaram a limonada por volta do ano 1299 A.C.</string>
+    <string name="p5">A primeira receita de chocolate continha pimenta em pó ao invés de açucar</string>
+    <string name="p6">Um pé de limão produz aproximadamente, 4500 limões por ano</string>
+    <string name="p7">Ketchup ja foi vendido como medicamento</string>
+    <string name="p8">Leonardo da Vinci descobriu que a quantidade de aneis no interior do tronco das arvores representam a idade delas.</string>
+    <string name="p9">O luz da fêmea do vagalume é duas vezes mais brilhante do que do macho</string>
+    <string name="p10">O bambu é uma variedade de limão</string>
+
+</resources>
