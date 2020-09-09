@@ -15,7 +15,6 @@
         android:layout_gravity="center|center_horizontal|center_vertical"
         android:layout_weight="1"
         android:gravity="center|center_horizontal|center_vertical"
-        android:text="textoPergunta"
         android:textSize="18sp" />
 
     <ProgressBar
@@ -24,16 +23,18 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_gravity="center|center_horizontal|center_vertical"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:background="#C333BC"
+        android:backgroundTint="#FDFCF8"
+        android:progressTint="#6200EE" />
 
     <TextView
-        android:id="@+id/textResposta"
+        android:id="@+id/txtQuizEstatisticas"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_gravity="center_horizontal|fill_horizontal"
         android:layout_weight="1"
         android:gravity="center|center_horizontal|center_vertical"
-        android:text="TextView"
         android:textSize="18sp" />
 
     <Button
