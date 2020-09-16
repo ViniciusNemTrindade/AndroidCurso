@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Finger Speed Game</string>
     <string name="timer_text">Tempo</string>
-    <string name="mil">1000</string>
+    <string name="mil">10</string>
     <string name="texto_botao">Toque, Toque!</string>
+    <string name="alert_tiulo">"O jogo acabou, você gostaria de reinicia-lo?"</string>
+    <string name="alert_mensagem">Mandou bem!</string>
+    <string name="alert_botaon_ok">OK</string>
 </resources>
