@@ -1,8 +1,9 @@
 package com.vinicius.applistadefavoritos;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Categoria {
+public class Categoria implements Serializable {
 
     private String nome;
     private ArrayList<String> itens = new ArrayList<>();

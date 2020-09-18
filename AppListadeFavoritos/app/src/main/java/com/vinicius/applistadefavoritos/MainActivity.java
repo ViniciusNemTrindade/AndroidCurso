@@ -1,6 +1,7 @@
 package com.vinicius.applistadefavoritos;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -22,10 +23,12 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements CategoriaRecyclerAdapter.InterfaceCategoriaFoiPressionada {
 
     private RecyclerView categoriaRecyclerView;
     private GerenciadorDeCategorias mGerenciadorDeCategorias = new GerenciadorDeCategorias(this);
+
+    public static final String CATEGORIA_OBJECT_KEY = "CATEGORIA_KEY";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList<Categoria> categorias = mGerenciadorDeCategorias.recuperarCategorias();
         categoriaRecyclerView = findViewById(R.id.categoria_recyclerview);
-        categoriaRecyclerView.setAdapter(new CategoriaRecyclerAdapter(categorias));
+        categoriaRecyclerView.setAdapter(new CategoriaRecyclerAdapter(categorias, MainActivity.this));
         categoriaRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -93,12 +96,28 @@ public class MainActivity extends AppCompatActivity {
                 CategoriaRecyclerAdapter categoriaRecyclerAdapter = (CategoriaRecyclerAdapter) categoriaRecyclerView.getAdapter();
                 categoriaRecyclerAdapter.addCategoria(categoria);
 
-
                 dialogInterface.dismiss();
+                mostrarItensDaCategoria(categoria);
             }
         });
 
         alertBuilder.create().show();
 
+    }
+
+    private void  mostrarItensDaCategoria(Categoria categoria) {
+
+        Intent itensCategoriaIntent = new Intent(this, ItensDaCategoriaActivity.class);
+        itensCategoriaIntent.putExtra(CATEGORIA_OBJECT_KEY, categoria);
+
+        startActivity(itensCategoriaIntent);
+
+
+    }
+
+    @Override
+    public void categoriaFoiPressionada(Categoria categoria) {
+
+        mostrarItensDaCategoria(categoria);
     }
 }
