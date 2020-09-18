@@ -9,4 +9,6 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="criar_categoria">Digite o nome da categoria</string>
+    <string name="positive_button_titulo">Criar</string>
 </resources>
