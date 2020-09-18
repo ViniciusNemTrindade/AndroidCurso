@@ -20,9 +20,12 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView categoriaRecyclerView;
+    private GerenciadorDeCategorias mGerenciadorDeCategorias = new GerenciadorDeCategorias(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +34,10 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        categoriaRecyclerView = findViewById(R.id.categoria_recyclerview);
 
-        categoriaRecyclerView.setAdapter(new CategoriaRecyclerAdapter());
+        ArrayList<Categoria> categorias = mGerenciadorDeCategorias.recuperarCategorias();
+        categoriaRecyclerView = findViewById(R.id.categoria_recyclerview);
+        categoriaRecyclerView.setAdapter(new CategoriaRecyclerAdapter(categorias));
         categoriaRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -73,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         String tituloAlert = getString(R.string.criar_categoria);
         String positiveButtonTitulo = getString(R.string.positive_button_titulo);
         AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
-        EditText categoriaEditText = new EditText(this);
+        final EditText categoriaEditText = new EditText(this);
         categoriaEditText.setInputType(InputType.TYPE_CLASS_TEXT);
 
         alertBuilder.setTitle(tituloAlert);
@@ -82,6 +86,13 @@ public class MainActivity extends AppCompatActivity {
         alertBuilder.setPositiveButton(positiveButtonTitulo, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
+
+                Categoria categoria = new Categoria(categoriaEditText.getText().toString(), new ArrayList<String>());
+                mGerenciadorDeCategorias.armazenaCategoria(categoria);
+
+                CategoriaRecyclerAdapter categoriaRecyclerAdapter = (CategoriaRecyclerAdapter) categoriaRecyclerView.getAdapter();
+                categoriaRecyclerAdapter.addCategoria(categoria);
+
 
                 dialogInterface.dismiss();
             }

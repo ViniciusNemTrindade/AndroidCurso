@@ -38,6 +38,18 @@ public class GerenciadorDeCategorias {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
         Map<String, ?> dado = sharedPreferences.getAll();
 
+        ArrayList<Categoria> categorias = new ArrayList<>();
+
+        for (Map.Entry<String, ?> entry : dado.entrySet()) {
+
+            Categoria categoria = new Categoria(entry.getKey(), new ArrayList<String>((HashSet) entry.getValue()));
+
+            categorias.add(categoria);
+
+        }
+
+        return categorias;
+
     }
 
 }

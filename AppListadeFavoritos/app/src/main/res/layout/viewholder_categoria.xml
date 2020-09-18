@@ -10,16 +10,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:layout_weight="1"
+        android:layout_weight="0"
         android:textColor="#FFFFFF"
-        android:textSize="24sp" />
+        android:textSize="36sp" />
 
     <TextView
         android:id="@+id/categoria_nome_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:layout_weight="1"
+        android:layout_weight="0"
         android:textColor="#FFFFFF"
-        android:textSize="24sp" />
+        android:textSize="36sp" />
 </LinearLayout>
