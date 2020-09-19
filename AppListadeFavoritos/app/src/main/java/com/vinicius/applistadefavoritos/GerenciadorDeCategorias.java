@@ -26,7 +26,7 @@ public class GerenciadorDeCategorias {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
-        HashSet itensHashSet = new HashSet(Arrays.asList(categoria.getItens()));
+        HashSet itensHashSet = new HashSet(categoria.getItens());
 
         editor.putStringSet(categoria.getNome(), itensHashSet);
 

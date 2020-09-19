@@ -1,5 +1,6 @@
 package com.vinicius.applistadefavoritos;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -29,6 +31,8 @@ public class MainActivity extends AppCompatActivity implements CategoriaRecycler
     private GerenciadorDeCategorias mGerenciadorDeCategorias = new GerenciadorDeCategorias(this);
 
     public static final String CATEGORIA_OBJECT_KEY = "CATEGORIA_KEY";
+    public static final int MAIN_ACTIVITY_REQUEST_CODE = 1000;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,9 +114,27 @@ public class MainActivity extends AppCompatActivity implements CategoriaRecycler
         Intent itensCategoriaIntent = new Intent(this, ItensDaCategoriaActivity.class);
         itensCategoriaIntent.putExtra(CATEGORIA_OBJECT_KEY, categoria);
 
-        startActivity(itensCategoriaIntent);
+        startActivityForResult(itensCategoriaIntent, MAIN_ACTIVITY_REQUEST_CODE);
 
+    }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == MAIN_ACTIVITY_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+
+            if (data != null) {
+                mGerenciadorDeCategorias.armazenaCategoria( (Categoria) data.getSerializableExtra(CATEGORIA_OBJECT_KEY));
+                utualizaCategorias();
+            }
+        }
+    }
+
+    private void utualizaCategorias() {
+
+       ArrayList<Categoria> categorias = mGerenciadorDeCategorias.recuperarCategorias();
+       categoriaRecyclerView.setAdapter(new CategoriaRecyclerAdapter(categorias, this));
     }
 
     @Override

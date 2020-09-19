@@ -29,7 +29,7 @@ public class ItensRecyclerAdapter extends RecyclerView.Adapter<ItemViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
 
-        holder.itemTextView.setText(categoria.getItens().get(position));
+        holder.itemTextView.setText(String.valueOf(categoria.getItens().get(position)));
 
     }
 
