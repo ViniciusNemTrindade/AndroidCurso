@@ -11,4 +11,6 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="criar_categoria">Digite o nome da categoria</string>
     <string name="positive_button_titulo">Criar</string>
+    <string name="item_dialog_titulo">Por favor, digite o nome do item aqui...</string>
+    <string name="positive_button_item">Criar item</string>
 </resources>

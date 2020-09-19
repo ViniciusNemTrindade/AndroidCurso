@@ -20,4 +20,5 @@ public class Categoria implements Serializable {
     public ArrayList<String> getItens() {
         return itens;
     }
+
 }
