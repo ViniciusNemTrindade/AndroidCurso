@@ -21,18 +21,17 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements CategoriaRecyclerAdapter.InterfaceCategoriaFoiPressionada {
-
-    private RecyclerView categoriaRecyclerView;
-    private GerenciadorDeCategorias mGerenciadorDeCategorias = new GerenciadorDeCategorias(this);
+public class MainActivity extends AppCompatActivity implements FragmentCategoria.OnCategoriaInterectionListener {
 
     public static final String CATEGORIA_OBJECT_KEY = "CATEGORIA_KEY";
     public static final int MAIN_ACTIVITY_REQUEST_CODE = 1000;
 
+    private  FragmentCategoria mFragmentCategoria = FragmentCategoria.newInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,11 +40,10 @@ public class MainActivity extends AppCompatActivity implements CategoriaRecycler
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-        ArrayList<Categoria> categorias = mGerenciadorDeCategorias.recuperarCategorias();
-        categoriaRecyclerView = findViewById(R.id.categoria_recyclerview);
-        categoriaRecyclerView.setAdapter(new CategoriaRecyclerAdapter(categorias, MainActivity.this));
-        categoriaRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.fragment_categoria_container, mFragmentCategoria)
+                .commit();
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -95,11 +93,7 @@ public class MainActivity extends AppCompatActivity implements CategoriaRecycler
             public void onClick(DialogInterface dialogInterface, int i) {
 
                 Categoria categoria = new Categoria(categoriaEditText.getText().toString(), new ArrayList<String>());
-                mGerenciadorDeCategorias.armazenaCategoria(categoria);
-
-                CategoriaRecyclerAdapter categoriaRecyclerAdapter = (CategoriaRecyclerAdapter) categoriaRecyclerView.getAdapter();
-                categoriaRecyclerAdapter.addCategoria(categoria);
-
+                mFragmentCategoria.fornecaCategoriaParaOGerenciador(categoria);
                 dialogInterface.dismiss();
                 mostrarItensDaCategoria(categoria);
             }
@@ -125,21 +119,17 @@ public class MainActivity extends AppCompatActivity implements CategoriaRecycler
         if (requestCode == MAIN_ACTIVITY_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
 
             if (data != null) {
-                mGerenciadorDeCategorias.armazenaCategoria( (Categoria) data.getSerializableExtra(CATEGORIA_OBJECT_KEY));
-                utualizaCategorias();
+                mFragmentCategoria.armazenaCategoria((Categoria) data.getSerializableExtra(CATEGORIA_OBJECT_KEY));
             }
         }
     }
 
-    private void utualizaCategorias() {
-
-       ArrayList<Categoria> categorias = mGerenciadorDeCategorias.recuperarCategorias();
-       categoriaRecyclerView.setAdapter(new CategoriaRecyclerAdapter(categorias, this));
-    }
 
     @Override
     public void categoriaFoiPressionada(Categoria categoria) {
 
+
         mostrarItensDaCategoria(categoria);
+
     }
 }

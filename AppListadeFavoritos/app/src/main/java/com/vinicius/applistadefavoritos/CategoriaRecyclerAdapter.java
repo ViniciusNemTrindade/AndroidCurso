@@ -22,11 +22,11 @@ public class CategoriaRecyclerAdapter extends RecyclerView.Adapter<CategoriaView
     }
 
     private ArrayList<Categoria> categorias;
-    private InterfaceCategoriaFoiPressionada interfaceCategoriaFoiPressionada;
+    private InterfaceCategoriaFoiPressionada listenerCategoriaFoiPressionada;
 
-    public CategoriaRecyclerAdapter(ArrayList<Categoria> categorias, InterfaceCategoriaFoiPressionada interfaceCategoriaFoiPressionada) {
+    public CategoriaRecyclerAdapter(ArrayList<Categoria> categorias, InterfaceCategoriaFoiPressionada listernerCategoriaFoiPressionada) {
         this.categorias = categorias;
-        this.interfaceCategoriaFoiPressionada = interfaceCategoriaFoiPressionada;
+        this.listenerCategoriaFoiPressionada = listernerCategoriaFoiPressionada;
     }
 
     @NonNull
@@ -49,7 +49,7 @@ public class CategoriaRecyclerAdapter extends RecyclerView.Adapter<CategoriaView
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                interfaceCategoriaFoiPressionada.categoriaFoiPressionada(categorias.get(position));
+                listenerCategoriaFoiPressionada.categoriaFoiPressionada(categorias.get(position));
             }
         });
 
