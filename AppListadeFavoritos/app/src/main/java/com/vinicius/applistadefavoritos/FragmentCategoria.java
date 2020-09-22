@@ -20,6 +20,10 @@ public class FragmentCategoria extends Fragment implements CategoriaRecyclerAdap
     private RecyclerView categoriaRecyclerView;
     private GerenciadorDeCategorias mGerenciadorDeCategorias;
 
+    public GerenciadorDeCategorias getmGerenciadorDeCategorias() {
+        return mGerenciadorDeCategorias;
+    }
+
     interface OnCategoriaInterectionListener {
 
         void categoriaFoiPressionada(Categoria categoria);

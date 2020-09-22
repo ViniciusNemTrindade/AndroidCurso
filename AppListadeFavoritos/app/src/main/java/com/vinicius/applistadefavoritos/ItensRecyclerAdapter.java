@@ -11,6 +11,12 @@ public class ItensRecyclerAdapter extends RecyclerView.Adapter<ItemViewHolder> {
 
     private Categoria categoria;
 
+    public void setCategoria(Categoria categoria) {
+
+        this.categoria = categoria;
+
+    }
+
     public ItensRecyclerAdapter(Categoria categoria) {
 
         this.categoria = categoria;

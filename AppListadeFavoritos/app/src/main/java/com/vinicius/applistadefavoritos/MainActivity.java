@@ -30,8 +30,12 @@ public class MainActivity extends AppCompatActivity implements FragmentCategoria
 
     public static final String CATEGORIA_OBJECT_KEY = "CATEGORIA_KEY";
     public static final int MAIN_ACTIVITY_REQUEST_CODE = 1000;
+    private  FragmentCategoria mFragmentCategoria;
+    private boolean  estaEmPaisagem = false;
+    private FragmentCategoriaItens mFragmentCategoriaItens;
+    FloatingActionButton fab;
 
-    private  FragmentCategoria mFragmentCategoria = FragmentCategoria.newInstance();
+    private FrameLayout categoriaItensFragmentContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,19 +44,19 @@ public class MainActivity extends AppCompatActivity implements FragmentCategoria
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        getSupportFragmentManager()
-                .beginTransaction()
-                .add(R.id.fragment_categoria_container, mFragmentCategoria)
-                .commit();
+        mFragmentCategoria = (FragmentCategoria) getSupportFragmentManager().findFragmentById(R.id.fragment_categoria);
+        categoriaItensFragmentContainer = findViewById(R.id.categoria_itens_fragment_container);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
+        estaEmPaisagem = categoriaItensFragmentContainer != null;
+
+        fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Toast.makeText(MainActivity.this, "Fab foi pressionado!", Toast.LENGTH_SHORT).show();
                 mostrarDialogoCategoriaCriada();
             }
         });
+
     }
 
     @Override
@@ -105,11 +109,56 @@ public class MainActivity extends AppCompatActivity implements FragmentCategoria
 
     private void  mostrarItensDaCategoria(Categoria categoria) {
 
-        Intent itensCategoriaIntent = new Intent(this, ItensDaCategoriaActivity.class);
-        itensCategoriaIntent.putExtra(CATEGORIA_OBJECT_KEY, categoria);
+        if (!estaEmPaisagem) {
+            Intent itensCategoriaIntent = new Intent(this, ItensDaCategoriaActivity.class);
+            itensCategoriaIntent.putExtra(CATEGORIA_OBJECT_KEY, categoria);
 
-        startActivityForResult(itensCategoriaIntent, MAIN_ACTIVITY_REQUEST_CODE);
+            startActivityForResult(itensCategoriaIntent, MAIN_ACTIVITY_REQUEST_CODE);
+        }else {
+            if (mFragmentCategoriaItens != null){
 
+                getSupportFragmentManager().beginTransaction()
+                        .remove(mFragmentCategoriaItens).commit();
+                mFragmentCategoriaItens = null;
+
+            }
+            setTitle(categoria.getNome());
+            mFragmentCategoriaItens = FragmentCategoriaItens.newInstance(categoria);
+            if (mFragmentCategoriaItens != null) {
+
+                getSupportFragmentManager().beginTransaction().replace(R.id.categoria_itens_fragment_container, mFragmentCategoriaItens).addToBackStack(null).commit();
+
+            }
+
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mostrarDialogoDoItemCategoriaCriada();
+                }
+            });
+
+        }
+
+    }
+
+    private void mostrarDialogoDoItemCategoriaCriada() {
+
+        final EditText itemEditText = new EditText(this);
+        itemEditText.setInputType(InputType.TYPE_CLASS_TEXT);
+        new AlertDialog.Builder(this)
+                .setTitle("Digite aqui, o nome do item")
+                .setView(itemEditText)
+                .setPositiveButton("Criar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                        String item = itemEditText.getText().toString();
+                        mFragmentCategoriaItens.addItemParaCategoria(item);
+                        dialogInterface.dismiss();
+                    }
+                })
+                .create()
+                .show();
     }
 
     @Override
@@ -130,6 +179,32 @@ public class MainActivity extends AppCompatActivity implements FragmentCategoria
 
 
         mostrarItensDaCategoria(categoria);
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        setTitle(getString(R.string.app_name));
+
+        if (mFragmentCategoriaItens.categoria != null) {
+
+            mFragmentCategoria.getmGerenciadorDeCategorias().armazenaCategoria(mFragmentCategoriaItens.categoria);
+        }
+
+        if (mFragmentCategoriaItens != null) {
+            getSupportFragmentManager().beginTransaction()
+                    .remove(mFragmentCategoriaItens).commit();
+            mFragmentCategoriaItens = null;
+        }
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mostrarDialogoCategoriaCriada();
+            }
+        });
 
     }
 }
