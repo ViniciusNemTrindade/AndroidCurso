@@ -24,10 +24,10 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        txtOlaMundo = findViewById(R.id.txtOlaMundo);
-        txtEaiMundo = findViewById(R.id.txtEaiMundo);
-        txtAndroid = findViewById(R.id.txtAndroid);
-        btnAnimado = findViewById(R.id.btnAnimado);
+//        txtOlaMundo = findViewById(R.id.txtOlaMundo);
+//        txtEaiMundo = findViewById(R.id.txtEaiMundo);
+//        txtAndroid = findViewById(R.id.txtAndroid);
+//        btnAnimado = findViewById(R.id.btnAnimado);
 
         txtOlaMundo.setX(2000);
         txtEaiMundo.setX(-2000);
