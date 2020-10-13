@@ -10,15 +10,9 @@
 
 
     <androidx.gridlayout.widget.GridLayout
-        android:id="@+id/gridLayout"
-        android:layout_width="324dp"
-        android:layout_height="324dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
+        android:id="@+id/idGridLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="#FFC107"
         app:columnCount="3"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -27,38 +21,128 @@
         app:layout_constraintTop_toTopOf="parent"
         app:rowCount="3">
 
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            app:layout_column="3"
-            app:layout_row="0"
-            app:srcCompat="@drawable/lion" />
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/img1"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            app:layout_column="3"
-            app:layout_row="0"
-            app:srcCompat="@drawable/lion" />
+            android:layout_margin="5dp"
+            android:alpha="0.4"
+            android:background="#000"
+            android:onClick="imgViewFoiPressionada"
+            android:tag="0" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/img2"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            app:layout_column="0"
-            app:layout_row="0"
-            app:srcCompat="@drawable/lion" />
+            android:layout_margin="5dp"
+            android:alpha="0.4"
+            android:background="#000"
+            android:onClick="imgViewFoiPressionada"
+            android:tag="1" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/img3"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            app:layout_column="1"
-            app:layout_row="0"
-            app:srcCompat="@drawable/lion" />
+            android:layout_margin="5dp"
+            android:alpha="0.4"
+            android:background="#000"
+            android:onClick="imgViewFoiPressionada"
+            android:tag="3" />
+
+        <ImageView
+            android:id="@+id/img4"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="5dp"
+            android:alpha="0.4"
+            android:background="#000"
+            android:onClick="imgViewFoiPressionada"
+            android:tag="3" />
+
+        <ImageView
+            android:id="@+id/img5"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="5dp"
+            android:alpha="0.4"
+            android:background="#000"
+            android:onClick="imgViewFoiPressionada"
+            android:tag="4" />
+
+        <ImageView
+            android:id="@+id/img6"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="5dp"
+            android:alpha="0.4"
+            android:background="#000"
+            android:onClick="imgViewFoiPressionada"
+            android:tag="5" />
+
+        <ImageView
+            android:id="@+id/img7"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="5dp"
+            android:alpha="0.4"
+            android:background="#000"
+            android:onClick="imgViewFoiPressionada"
+            android:tag="6" />
+
+        <ImageView
+            android:id="@+id/img8"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="5dp"
+            android:alpha="0.4"
+            android:background="#000"
+            android:onClick="imgViewFoiPressionada"
+            android:tag="7" />
+
+        <ImageView
+            android:id="@+id/img9"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="5dp"
+            android:alpha="0.4"
+            android:background="#000"
+            android:onClick="imgViewFoiPressionada"
+            android:tag="8" />
+
     </androidx.gridlayout.widget.GridLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="165dp"
+        android:layout_marginLeft="165dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="189dp"
+        android:layout_marginRight="189dp"
+        android:text="Leão ou Trigre?"
+        android:textColor="#031681"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnReset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="27dp"
+        android:background="#DC3838"
+        android:text="Reiniciar o Jogo"
+        android:textColor="#FFFFFF"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idGridLayout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
