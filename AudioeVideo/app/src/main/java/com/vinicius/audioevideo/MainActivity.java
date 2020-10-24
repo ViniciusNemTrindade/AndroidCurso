@@ -3,10 +3,11 @@ package com.vinicius.audioevideo;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.VideoView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnclickL{
 
     private VideoView myVideoView;
     private Button btnPlayVideo;
