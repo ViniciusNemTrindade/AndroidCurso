@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.MediaController;
 import android.widget.SeekBar;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -56,6 +57,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         volumeSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+
+                if(fromUser) {
+
+                    Toast.makeText(MainActivity.this, Integer.toString(progress), Toast.LENGTH_LONG ).show();
+                }
                 
             }
 
