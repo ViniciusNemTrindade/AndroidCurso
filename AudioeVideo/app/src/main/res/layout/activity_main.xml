@@ -76,6 +76,18 @@
         app:layout_constraintTop_toBottomOf="@+id/btnPlay"
         app:layout_constraintVertical_bias="0.12" />
 
+    <SeekBar
+        android:id="@+id/seekBarMove"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="156dp"
+        android:background="#D0C9EF9D"
+        android:progressBackgroundTint="#5407DD"
+        app:layout_constraintEnd_toEndOf="@+id/textView2"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/btnPlay" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -89,4 +101,16 @@
         app:layout_constraintStart_toEndOf="@+id/btnPause"
         app:layout_constraintTop_toBottomOf="@+id/btnPlay"
         app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:text="Move para frente e para trás"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toStartOf="@+id/btnMusic"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toEndOf="@+id/btnPause"
+        app:layout_constraintTop_toBottomOf="@+id/seekBarVolume" />
 </androidx.constraintlayout.widget.ConstraintLayout>

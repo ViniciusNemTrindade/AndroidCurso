@@ -10,10 +10,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.MediaController;
 import android.widget.SeekBar;
-import android.widget.Toast;
 import android.widget.VideoView;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+import java.sql.Time;
+import java.util.Timer;
+import java.util.TimerTask;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, SeekBar.OnSeekBarChangeListener {
 
     // Ui Components
     private VideoView myVideoView;
@@ -25,9 +28,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private MediaPlayer mediaPlayer;
 
     private SeekBar volumeSeekBar;
+    private SeekBar moveParaFrenteEparaTrasSeekBar;
     private AudioManager audioManager;
-
-
+    private Timer timer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnPlayMusic = findViewById(R.id.btnMusic);
         btnPauseMusic = findViewById(R.id.btnPause);
         volumeSeekBar = findViewById(R.id.seekBarVolume);
+        moveParaFrenteEparaTrasSeekBar = findViewById(R.id.seekBarMove);
 
         btnPlayVideo.setOnClickListener(MainActivity.this);
         btnPlayMusic.setOnClickListener(MainActivity.this);
@@ -60,7 +64,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 if(fromUser) {
 
-                    Toast.makeText(MainActivity.this, Integer.toString(progress), Toast.LENGTH_LONG ).show();
+//                    Toast.makeText(MainActivity.this, Integer.toString(progress), Toast.LENGTH_SHORT ).show();
+
+                    audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, progress, 0);
                 }
                 
             }
@@ -75,6 +81,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             }
         });
+
+        moveParaFrenteEparaTrasSeekBar.setOnSeekBarChangeListener(this);
 
     }
 
@@ -92,6 +100,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.btnMusic:
                 mediaPlayer.start();
+                timer = new Timer();
+                timer.scheduleAtFixedRate(new TimerTask() {
+                    @Override
+                    public void run() {
+
+                        moveParaFrenteEparaTrasSeekBar.setProgress(mediaPlayer.getCurrentPosition());
+                    }
+                },0, 1000);
+
                 break;
 
             case R.id.btnPause:
@@ -100,6 +117,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
 
+
+    }
+
+    @Override
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+
+        if (fromUser) {
+
+
+        }
+
+    }
+
+    @Override
+    public void onStartTrackingTouch(SeekBar seekBar) {
+
+    }
+
+    @Override
+    public void onStopTrackingTouch(SeekBar seekBar) {
 
     }
 }
