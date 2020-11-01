@@ -10,13 +10,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.MediaController;
 import android.widget.SeekBar;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import java.sql.Time;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, SeekBar.OnSeekBarChangeListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, SeekBar.OnSeekBarChangeListener, MediaPlayer.OnCompletionListener {
 
     // Ui Components
     private VideoView myVideoView;
@@ -83,6 +84,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
 
         moveParaFrenteEparaTrasSeekBar.setOnSeekBarChangeListener(this);
+        moveParaFrenteEparaTrasSeekBar.setMax(mediaPlayer.getDuration() );
+        mediaPlayer.setOnCompletionListener(this);
 
     }
 
@@ -113,6 +116,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.btnPause:
                 mediaPlayer.pause();
+                timer.cancel();;
                 break;
 
         }
@@ -125,7 +129,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if (fromUser) {
 
-
+            mediaPlayer.seekTo(progress);
         }
 
     }
@@ -133,10 +137,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onStartTrackingTouch(SeekBar seekBar) {
 
+        mediaPlayer.pause();
+
     }
 
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
 
+        mediaPlayer.start();
+    }
+
+    @Override
+    public void onCompletion(MediaPlayer mp) {
+        timer.cancel();
+        Toast.makeText(this, "A musica terminou!", Toast.LENGTH_SHORT).show();
     }
 }
