@@ -25,7 +25,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mImgAikido = findViewById(R.id.imgAikido);
         mImgTaekwondo = findViewById(R.id.imgTaekwondo);
 
+        mImgBoxing.setOnClickListener(MainActivity.this);
         mImgKickboxing.setOnClickListener(MainActivity.this);
+        mImgJudo.setOnClickListener(MainActivity.this);
+        mImgKarate.setOnClickListener(MainActivity.this);
+        mImgTaekwondo.setOnClickListener(MainActivity.this);
+        mImgAikido.setOnClickListener(MainActivity.this);
     }
 
     @Override
@@ -34,24 +39,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (imageButtonView.getId()) {
 
             case R.id.imgBoxing:
+                toqueNomeSport(mImgBoxing.getTag().toString());
                 break;
             case R.id.imgKickboxing:
+                toqueNomeSport(mImgKickboxing.getTag().toString());
                 break;
             case R.id.imgJudo:
+                toqueNomeSport(mImgJudo.getTag().toString());
                 break;
             case R.id.imgKarate:
+                toqueNomeSport(mImgKarate.getTag().toString());
                 break;
             case R.id.imgAikido:
+                toqueNomeSport(mImgAikido.getTag().toString());
                 break;
             case R.id.imgTaekwondo:
+                toqueNomeSport(mImgTaekwondo.getTag().toString());
                 break;
         }
 
     }
 
-    public void coloqueNomeSport(String nomeSport) {
+    public void toqueNomeSport(String nomeSport) {
 
         sportPlayer = MediaPlayer.create(this, getResources().getIdentifier(nomeSport, "raw", getPackageName()));
+
+        sportPlayer.start();
 
     }
 
