@@ -6,15 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".SignUp">
 
-    <com.google.android.material.tabs.TabLayout/>
-    <com.google.android.material.appbar.AppBarLayout/>
-    <androidx.appcompat.widget.Toolbar/>
-
+<!--    <com.google.android.material.tabs.TabLayout/>-->
+<!--    <com.google.android.material.appbar.AppBarLayout/>-->
+<!--    <androidx.appcompat.widget.Toolbar/>-->
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="helloWorldPressionado"
         android:text="Hello World!"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
