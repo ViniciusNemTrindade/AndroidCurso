@@ -19,28 +19,27 @@ public class SignUp extends AppCompatActivity {
     }
 
     public void  helloWorldPressionado(View view) {
-
-        ParseObject boxer = new ParseObject("Boxer");
-        boxer.put("velocidade_soco", 200);
-        boxer.saveInBackground(new SaveCallback() {
-            @Override
-            public void done(ParseException e) {
-                if (e == null) {
-                    Toast.makeText(SignUp.this, "Objeto boxer salvo com Sucesso!", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
-    }
-
-    public void kickboxerObjectPressionado(View view) {
+//
+//        ParseObject boxer = new ParseObject("Boxer");
+//        boxer.put("velocidade_soco", 200);
+//        boxer.saveInBackground(new SaveCallback() {
+//            @Override
+//            public void done(ParseException e) {
+//                if (e == null) {
+//                    Toast.makeText(SignUp.this, "Objeto boxer salvo com Sucesso!", Toast.LENGTH_LONG).show();
+//                }
+//            }
+//        });
 
         ParseObject kickboxer = new ParseObject("Kicboxer");
-        kickboxer.put("velocidade do chute", 400);
+        kickboxer.put("nome", "Joaquim");
+        kickboxer.put("velociadade do soco", 500);
+        kickboxer.put("velocidade do chute", 800);
         kickboxer.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
-                if (e == null) {
-                    Toast.makeText(SignUp.this, "Objeto kickboxeer salvo sucesso!", Toast.LENGTH_LONG).show();
+                if (e != null) {
+                    Toast.makeText(SignUp.this, " objeto kickboxer " + kickboxer.get("nome") + ", salvo sucesso no Server!", Toast.LENGTH_LONG).show();
                 }
             }
         });
