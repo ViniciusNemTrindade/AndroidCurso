@@ -31,4 +31,19 @@ public class SignUp extends AppCompatActivity {
             }
         });
     }
+
+    public void kickboxerObjectPressionado(View view) {
+
+        ParseObject kickboxer = new ParseObject("Kicboxer");
+        kickboxer.put("velocidade do chute", 400);
+        kickboxer.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e == null) {
+                    Toast.makeText(SignUp.this, "Objeto kickboxeer salvo sucesso!", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+    }
 }
