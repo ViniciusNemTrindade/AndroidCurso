@@ -6,12 +6,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.parse.FindCallback;
+import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.SaveCallback;
 import com.shashank.sony.fancytoastlib.FancyToast;
+
+import java.util.List;
 
 public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
@@ -22,6 +28,9 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
     private EditText mEdtTxtVelocidadeChuteLutadorMMA;
     private EditText mEdtTxtForcaChuteLutadorMMA;
     private EditText mEdtTxtNomeLutadorMMA;
+    private TextView mTxtObterDados;
+    private Button mBtnTodosDadosLutador;
+    private String mTodosLutadoresMMA;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +42,53 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         mEdtTxtForcaSocoLutadorMMA = findViewById(R.id.edtTxtForcaSoco);
         mEdtTxtVelocidadeChuteLutadorMMA = findViewById(R.id.edtTxtVelocidadeChute);
         mEdtTxtForcaChuteLutadorMMA = findViewById(R.id.edtTxtForcaChute);
+
+        mTxtObterDados = findViewById(R.id.txtObterDados);
+        mTxtObterDados.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                mTodosLutadoresMMA = "";
+                ParseQuery<ParseObject> parseQuery = ParseQuery.getQuery("LutadorMMA");
+                parseQuery.getInBackground("Ga6rS33sNI", new GetCallback<ParseObject>() {
+                    @Override
+                    public void done(ParseObject object, ParseException e) {
+                        if (object != null && e == null) {
+
+                            mTxtObterDados.setText(object.get("nome") + " - " + "Força do soco: " + object.get("forcaSoco") + " Velocidade do soco: "
+                                    + object.get("velocidadeSoco") + " Força do chute: " +  object.get("forcaChute") + " Velocidade do chute: " + object.get("velocidadeChute") );
+                        }
+                    }
+
+                });
+            }
+        });
+
+        mBtnTodosDadosLutador = findViewById(R.id.btnTodosDadosLutador);
+        mBtnTodosDadosLutador.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ParseQuery<ParseObject> todasQuery = ParseQuery.getQuery("LutadorMMA");
+                todasQuery.findInBackground(new FindCallback<ParseObject>() {
+                    @Override
+                    public void done(List<ParseObject> objects, ParseException e) {
+                        if (e == null) {
+                            if (objects.size() > 0) {
+
+                                for (ParseObject lutadroMMA : objects) {
+                                    mTodosLutadoresMMA = mTodosLutadoresMMA + lutadroMMA.get("nome") + "\n";
+                                }
+                                FancyToast.makeText(SignUp.this, mTodosLutadoresMMA, FancyToast.LENGTH_LONG, FancyToast.SUCCESS, true).show();
+
+                            } else {
+                                FancyToast.makeText(SignUp.this, "Ocorreu um erro! Ao salvar o objeto de nome: " , FancyToast.LENGTH_LONG, FancyToast.ERROR, true).show();
+                            }
+                        }
+                    }
+                });
+            }
+        });
+
 
         mBtnSalvarObjLutadorMMA = findViewById(R.id.btnSalvar);
         mBtnSalvarObjLutadorMMA.setOnClickListener(SignUp.this);
@@ -59,7 +115,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                     }
                 }
             });
-        }catch(Exception e) {
+        } catch (Exception e) {
             FancyToast.makeText(SignUp.this, "Ocorreu um erro! Ao salvar o Objeto!", FancyToast.LENGTH_LONG, FancyToast.ERROR, true).show();
         }
     }
