@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.parse.FindCallback;
 import com.parse.GetCallback;
@@ -19,7 +18,7 @@ import com.shashank.sony.fancytoastlib.FancyToast;
 
 import java.util.List;
 
-public class SignUp extends AppCompatActivity implements View.OnClickListener {
+public class Cadastro extends AppCompatActivity implements View.OnClickListener {
 
     private Button mBtnSalvarObjLutadorMMA;
 
@@ -31,6 +30,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
     private TextView mTxtObterDados;
     private Button mBtnTodosDadosLutador;
     private String mTodosLutadoresMMA;
+    private Button mBtnTrocarActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +42,8 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         mEdtTxtForcaSocoLutadorMMA = findViewById(R.id.edtTxtForcaSoco);
         mEdtTxtVelocidadeChuteLutadorMMA = findViewById(R.id.edtTxtVelocidadeChute);
         mEdtTxtForcaChuteLutadorMMA = findViewById(R.id.edtTxtForcaChute);
+
+        mBtnTrocarActivity = findViewById(R.id.btnTrocarActivity);
 
         mTxtObterDados = findViewById(R.id.txtObterDados);
         mTxtObterDados.setOnClickListener(new View.OnClickListener() {
@@ -83,10 +85,10 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                                 for (ParseObject lutadroMMA : objects) {
                                     mTodosLutadoresMMA = mTodosLutadoresMMA + lutadroMMA.get("nome") + "\n";
                                 }
-                                FancyToast.makeText(SignUp.this, mTodosLutadoresMMA, FancyToast.LENGTH_LONG, FancyToast.SUCCESS, true).show();
+                                FancyToast.makeText(Cadastro.this, mTodosLutadoresMMA, FancyToast.LENGTH_LONG, FancyToast.SUCCESS, true).show();
 
                             } else {
-                                FancyToast.makeText(SignUp.this, "Ocorreu um erro! Ao salvar o objeto de nome: " , FancyToast.LENGTH_LONG, FancyToast.ERROR, true).show();
+                                FancyToast.makeText(Cadastro.this, "Ocorreu um erro! Ao salvar o objeto de nome: " , FancyToast.LENGTH_LONG, FancyToast.ERROR, true).show();
                             }
                         }
                     }
@@ -96,7 +98,17 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
 
         mBtnSalvarObjLutadorMMA = findViewById(R.id.btnSalvar);
-        mBtnSalvarObjLutadorMMA.setOnClickListener(SignUp.this);
+        mBtnSalvarObjLutadorMMA.setOnClickListener(Cadastro.this);
+
+
+        mBtnTrocarActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+
     }
 
     public void onClick(View view) {
@@ -112,16 +124,16 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                 @Override
                 public void done(ParseException e) {
                     if (e == null) {
-                        FancyToast.makeText(SignUp.this, "O objeto LutadorMMA de nome: " +
+                        FancyToast.makeText(Cadastro.this, "O objeto LutadorMMA de nome: " +
                                 lutadorMMA.get("nome") + " foi salvo como sucesso!", FancyToast.LENGTH_LONG, FancyToast.SUCCESS, true).show();
                     } else {
-                        FancyToast.makeText(SignUp.this, "Ocorreu um erro! Ao salvar o objeto de nome: " +
+                        FancyToast.makeText(Cadastro.this, "Ocorreu um erro! Ao salvar o objeto de nome: " +
                                 lutadorMMA.get("nome"), FancyToast.LENGTH_LONG, FancyToast.ERROR, true).show();
                     }
                 }
             });
         } catch (Exception e) {
-            FancyToast.makeText(SignUp.this, "Ocorreu um erro! Ao salvar o Objeto!", FancyToast.LENGTH_LONG, FancyToast.ERROR, true).show();
+            FancyToast.makeText(Cadastro.this, "Ocorreu um erro! Ao salvar o Objeto!", FancyToast.LENGTH_LONG, FancyToast.ERROR, true).show();
         }
     }
 }
