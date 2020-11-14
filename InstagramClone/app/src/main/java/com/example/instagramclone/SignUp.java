@@ -68,7 +68,11 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         mBtnTodosDadosLutador.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 ParseQuery<ParseObject> todasQuery = ParseQuery.getQuery("LutadorMMA");
+
+                todasQuery.whereStartsWith("nome", "A");
+
                 todasQuery.findInBackground(new FindCallback<ParseObject>() {
                     @Override
                     public void done(List<ParseObject> objects, ParseException e) {
