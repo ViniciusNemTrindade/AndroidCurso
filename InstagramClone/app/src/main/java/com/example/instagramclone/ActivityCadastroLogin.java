@@ -1,5 +1,6 @@
 package com.example.instagramclone;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -8,6 +9,7 @@ import android.widget.EditText;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
@@ -35,7 +37,7 @@ public class ActivityCadastroLogin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                ParseUser appUser = new ParseUser();
+                final ParseUser appUser = new ParseUser();
                 appUser.setUsername(mEdtCadastroNomeUsuario.getText().toString());
                 appUser.setPassword(mEdtCadastroNomeUsuario.getText().toString());
                 appUser.signUpInBackground(new SignUpCallback() {
@@ -44,7 +46,10 @@ public class ActivityCadastroLogin extends AppCompatActivity {
 
                         if (e == null) {
 
-                            FancyToast.makeText(ActivityCadastroLogin.this, appUser.get("nome") + " , seu cadastro foi realizado com sucesso!", FancyToast.LENGTH_LONG, FancyToast.SUCCESS, true).show();
+                            FancyToast.makeText(ActivityCadastroLogin.this, appUser.get("username") + " , seu cadastro foi realizado com sucesso!", FancyToast.LENGTH_LONG, FancyToast.SUCCESS, true).show();
+
+                            Intent intent = new Intent(ActivityCadastroLogin.this, ActivityBemVindos.class);
+                            startActivity(intent);
                         }
                         else {
                             FancyToast.makeText(ActivityCadastroLogin.this, e.getMessage(), FancyToast.LENGTH_LONG, FancyToast.ERROR, true).show();
@@ -61,7 +66,20 @@ public class ActivityCadastroLogin extends AppCompatActivity {
         mBtnLoginUsuario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ParseUser.logInInBackground(mEdtLoginNomeUsuario.getText().toString(), mEdtLoginSenhaUsuario.getText().toString(), new LogInCallback() {
+                    @Override
+                    public void done(ParseUser user, ParseException e) {
+                        if (user != null && e == null) {
+                            FancyToast.makeText(ActivityCadastroLogin.this, user.get("username") + " , Login foi realizado com sucesso!", FancyToast.LENGTH_LONG, FancyToast.SUCCESS, true).show();
 
+                            Intent intent = new Intent(ActivityCadastroLogin.this, ActivityBemVindos.class);
+                            startActivity(intent);
+                        }
+                        else {
+                            FancyToast.makeText(ActivityCadastroLogin.this, e.getMessage(), FancyToast.LENGTH_LONG, FancyToast.ERROR, true).show();
+                        }
+                    }
+                });
             }
         });
     }

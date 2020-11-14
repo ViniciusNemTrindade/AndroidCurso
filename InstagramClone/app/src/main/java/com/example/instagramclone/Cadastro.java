@@ -81,7 +81,7 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
                     @Override
                     public void done(List<ParseObject> objects, ParseException e) {
                         if (e == null) {
-                            if (objects.size() > 0) {
+                            if (objects.size() > 1) {
 
                                 for (ParseObject lutadroMMA : objects) {
                                     mTodosLutadoresMMA = mTodosLutadoresMMA + lutadroMMA.get("nome") + "\n";
