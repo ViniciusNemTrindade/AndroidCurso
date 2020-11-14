@@ -71,7 +71,8 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
                 ParseQuery<ParseObject> todasQuery = ParseQuery.getQuery("LutadorMMA");
 
-                todasQuery.whereGreaterThan("forcaSoco", 100);
+//                todasQuery.whereStartsWith("nome", "A");
+                todasQuery.setLimit(3);
 
                 todasQuery.findInBackground(new FindCallback<ParseObject>() {
                     @Override
