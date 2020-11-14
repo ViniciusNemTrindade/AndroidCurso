@@ -8,7 +8,10 @@ import android.widget.EditText;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.parse.ParseException;
 import com.parse.ParseUser;
+import com.parse.SignUpCallback;
+import com.shashank.sony.fancytoastlib.FancyToast;
 
 public class ActivityCadastroLogin extends AppCompatActivity {
 
@@ -35,6 +38,20 @@ public class ActivityCadastroLogin extends AppCompatActivity {
                 ParseUser appUser = new ParseUser();
                 appUser.setUsername(mEdtCadastroNomeUsuario.getText().toString());
                 appUser.setPassword(mEdtCadastroNomeUsuario.getText().toString());
+                appUser.signUpInBackground(new SignUpCallback() {
+                    @Override
+                    public void done(ParseException e) {
+
+                        if (e == null) {
+
+                            FancyToast.makeText(ActivityCadastroLogin.this, appUser.get("nome") + " , seu cadastro foi realizado com sucesso!", FancyToast.LENGTH_LONG, FancyToast.SUCCESS, true).show();
+                        }
+                        else {
+                            FancyToast.makeText(ActivityCadastroLogin.this, e.getMessage(), FancyToast.LENGTH_LONG, FancyToast.ERROR, true).show();
+                        }
+                    }
+                });
+
             }
         });
 
