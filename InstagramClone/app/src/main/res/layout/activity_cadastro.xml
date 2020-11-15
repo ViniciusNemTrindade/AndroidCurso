@@ -68,7 +68,7 @@
         android:background="@color/teal_700"
         android:backgroundTint="#FA000DFF"
         android:gravity="center"
-        android:text="Obter uma conta"
+        android:text="Cadastrar"
         android:textColor="#FFFFFF"
         android:textColorHighlight="#FFFFFF"
         android:textColorHint="#FFF"
@@ -80,7 +80,7 @@
         app:rippleColor="#065B9F" />
 
     <Button
-        android:id="@+id/btnViewCadastroLogin"
+        android:id="@+id/btnViewCadastroLogar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"

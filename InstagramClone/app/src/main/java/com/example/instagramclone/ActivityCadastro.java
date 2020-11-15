@@ -34,8 +34,12 @@ public class ActivityCadastro extends AppCompatActivity implements View.OnClickL
         btnViewCadastrar = findViewById(R.id.btnViewCadastroCadastrar);
         btnViewCadastrar.setOnClickListener(this);
 
-        btnViewLogin = findViewById(R.id.btnViewCadastroLogin);
+        btnViewLogin = findViewById(R.id.btnViewCadastroLogar);
         btnViewLogin.setOnClickListener(this);
+
+        if (ParseUser.getCurrentUser() != null) {
+            ParseUser.getCurrentUser().logOut();
+        }
     }
 
     @Override
@@ -57,13 +61,18 @@ public class ActivityCadastro extends AppCompatActivity implements View.OnClickL
                             FancyToast.makeText(ActivityCadastro.this, appUser.getUsername() +
                                     " , O cadastrofoi realizado com sucesso!", FancyToast.LENGTH_LONG, FancyToast.SUCCESS, true).show();
                         } else {
-                            FancyToast.makeText(ActivityCadastro.this, "Algo deu errado!" + e.getMessage(), FancyToast.LENGTH_LONG, FancyToast.ERROR, true).show();
+                            FancyToast.makeText(ActivityCadastro.this, "Algo deu errado!" +
+                                    e.getMessage(), FancyToast.LENGTH_LONG, FancyToast.ERROR, true).show();
                         }
                     }
                 });
                 break;
 
-            case R.id.btnViewCadastroLogin:
+            case R.id.btnViewCadastroLogar:
+
+                Intent intent = new Intent(ActivityCadastro.this, ActivityLogin.class);
+                startActivity(intent);
+
                 break;
 
         }

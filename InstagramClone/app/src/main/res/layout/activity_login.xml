@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#850707"
+    android:background="#D051E6"
     tools:context=".ActivityCadastro">
 
     <!--    <com.google.android.material.tabs.TabLayout/>-->
@@ -55,7 +55,7 @@
         android:background="@color/teal_700"
         android:backgroundTint="#FA000DFF"
         android:gravity="center"
-        android:text="Obter uma conta"
+        android:text="Cadastrar"
         android:textColor="#FFFFFF"
         android:textColorHighlight="#FFFFFF"
         android:textColorHint="#FFF"
