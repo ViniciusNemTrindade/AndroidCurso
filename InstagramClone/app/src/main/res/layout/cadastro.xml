@@ -4,125 +4,103 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#850707"
     tools:context=".Cadastro">
 
-<!--    <com.google.android.material.tabs.TabLayout/>-->
-<!--    <com.google.android.material.appbar.AppBarLayout/>-->
-<!--    <androidx.appcompat.widget.Toolbar/>-->
+    <!--    <com.google.android.material.tabs.TabLayout/>-->
+    <!--    <com.google.android.material.appbar.AppBarLayout/>-->
+    <!--    <androidx.appcompat.widget.Toolbar/>-->
 
 
     <EditText
-        android:id="@+id/edtTxtLutadorMMA"
+        android:id="@+id/edtTextViewSenha"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="Por favor, digite o nome do Lutador"
-        android:inputType="textPersonName"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:gravity="center|start"
+        android:hint="Por favor, digite a senha..."
+        android:textColor="#FFF"
+        android:textColorHint="#FFFFFF"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/edtTxtViewUsuario" />
 
     <EditText
-        android:id="@+id/edtTxtVelocidadeSoco"
+        android:id="@+id/edtTxtViewUsuario"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="Por favor, digite a velocidade do soco"
-        android:inputType="textPersonName"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:gravity="center|start"
+        android:hint="Por favor, digite o nome de usuário..."
+        android:textColor="#FFF"
+        android:textColorHint="#FFFFFF"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtTxtLutadorMMA" />
+        app:layout_constraintTop_toBottomOf="@+id/edtTextViewEmail" />
 
     <EditText
-        android:id="@+id/edtTxtForcaSoco"
+        android:id="@+id/edtTextViewEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="Por favor, digite a força do soco"
-        android:inputType="textPersonName"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="48dp"
+        android:gravity="center|start"
+        android:hint="Por favor, digite o email..."
+        android:textColor="#FFF"
+        android:textColorHint="#FFFFFF"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtTxtVelocidadeSoco" />
-
-    <EditText
-        android:id="@+id/edtTxtVelocidadeChute"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="Por favor, digite a velocidade do chute"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtTxtForcaSoco" />
-
-    <EditText
-        android:id="@+id/edtTxtForcaChute"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:hint="Por favor, digite a força do chute"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtTxtVelocidadeChute" />
+        app:layout_constraintTop_toBottomOf="@+id/imgLogoViewCadastro" />
 
     <Button
-        android:id="@+id/btnSalvar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Salvar Objeto LutadorMMA no Server"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtTxtForcaChute" />
-
-    <TextView
-        android:id="@+id/txtObterDados"
+        android:id="@+id/btnCadastrar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:gravity="center"
-        android:text="Obeter dados do Server"
-        android:textColor="#DD2828"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSalvar" />
-
-    <Button
-        android:id="@+id/btnTodosDadosLutador"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="8dp"
-        android:text="Obter todos os dados do lutador"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:background="#2196F3"
+        android:backgroundTint="#3F51B5"
+        android:text="Obter uma conta"
+        android:textColorHint="#3F51B5"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtObterDados" />
+        app:layout_constraintTop_toBottomOf="@+id/edtTextViewSenha"
+        app:rippleColor="#3F51B5" />
 
     <Button
-        android:id="@+id/btnTrocarActivity"
+        android:id="@+id/btnCadastrar2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="8dp"
-        android:text="trocar para outra Activity"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="#2196F3"
+        android:backgroundTint="#3F51B5"
+        android:text="Fazer Login"
+        android:textColorHint="#3F51B5"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnTodosDadosLutador" />
+        app:layout_constraintTop_toBottomOf="@+id/btnCadastrar"
+        app:rippleColor="#3F51B5" />
+
+    <ImageView
+        android:id="@+id/imgLogoViewCadastro"
+        android:layout_width="178dp"
+        android:layout_height="121dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/instagram_logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
