@@ -2,11 +2,13 @@ package com.example.instagramclone;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -54,6 +56,9 @@ public class ActivityCadastro extends AppCompatActivity implements View.OnClickL
                 appUser.setUsername(edtViewUsuarioCadastro.getText().toString());
                 appUser.setPassword(edtViewSenhaCadastro.getText().toString());
 
+                ProgressDialog progressDialog = new ProgressDialog(this);
+                progressDialog.setMessage("Cadastrando usuaário: " + edtViewUsuarioCadastro.getText().toString());
+                progressDialog.show();
                 appUser.signUpInBackground(new SignUpCallback() {
                     @Override
                     public void done(ParseException e) {
@@ -64,6 +69,8 @@ public class ActivityCadastro extends AppCompatActivity implements View.OnClickL
                             FancyToast.makeText(ActivityCadastro.this, "Algo deu errado!" +
                                     e.getMessage(), FancyToast.LENGTH_LONG, FancyToast.ERROR, true).show();
                         }
+
+                        progressDialog.dismiss();
                     }
                 });
                 break;

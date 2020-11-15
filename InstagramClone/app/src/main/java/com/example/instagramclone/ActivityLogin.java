@@ -35,6 +35,11 @@ public class  ActivityLogin extends AppCompatActivity implements View.OnClickLis
 
         mBtnViewLoginLogar = findViewById(R.id.btnViewLoginLogar);
         mBtnViewLoginLogar.setOnClickListener(this);
+
+        if (ParseUser.getCurrentUser() != null) {
+            ParseUser.getCurrentUser().logOut();
+        }
+
     }
 
     @Override
