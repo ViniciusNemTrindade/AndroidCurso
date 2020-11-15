@@ -13,7 +13,7 @@
 
 
     <EditText
-        android:id="@+id/edtTextViewSenha"
+        android:id="@+id/edtTextSenhaLogin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -24,26 +24,12 @@
         android:textColorHint="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtTxtViewUsuario" />
+        app:layout_constraintTop_toBottomOf="@+id/edtTextEmailLogin" />
 
     <EditText
-        android:id="@+id/edtTxtViewUsuario"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:gravity="center|start"
-        android:hint="Por favor, digite o nome de usuário..."
-        android:textColor="#FFF"
-        android:textColorHint="#FFFFFF"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtTextViewEmail" />
-
-    <EditText
-        android:id="@+id/edtTextViewEmail"
+        android:id="@+id/edtTextEmailLogin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -54,47 +40,55 @@
         android:textColorHint="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgLogoViewCadastro" />
-
-    <Button
-        android:id="@+id/btnCadastrar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        android:background="#2196F3"
-        android:backgroundTint="#3F51B5"
-        android:text="Obter uma conta"
-        android:textColorHint="#3F51B5"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtTextViewSenha"
-        app:rippleColor="#3F51B5" />
+        app:layout_constraintTop_toBottomOf="@+id/imgLogoViewLogin" />
 
     <Button
-        android:id="@+id/btnCadastrar2"
+        android:id="@+id/btnViewLoginCadastrar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:background="#2196F3"
-        android:backgroundTint="#3F51B5"
-        android:text="Fazer Login"
-        android:textColorHint="#3F51B5"
-        android:textSize="18sp"
+        android:background="@color/teal_700"
+        android:backgroundTint="#FA000DFF"
+        android:gravity="center"
+        android:text="Obter uma conta"
+        android:textColor="#FFFFFF"
+        android:textColorHighlight="#FFFFFF"
+        android:textColorHint="#FFF"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnCadastrar"
+        app:layout_constraintTop_toBottomOf="@+id/btnViewLoginLogar"
+        app:rippleColor="#065B9F" />
+
+    <Button
+        android:id="@+id/btnViewLoginLogar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="#2196F3"
+        android:backgroundTint="#02F80C"
+        android:gravity="center"
+        android:text="Fazer Login"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#3F51B5"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnViewLoginCadastrar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtTextSenhaLogin"
         app:rippleColor="#3F51B5" />
 
     <ImageView
-        android:id="@+id/imgLogoViewCadastro"
+        android:id="@+id/imgLogoViewLogin"
         android:layout_width="178dp"
         android:layout_height="121dp"
         android:layout_marginTop="16dp"
