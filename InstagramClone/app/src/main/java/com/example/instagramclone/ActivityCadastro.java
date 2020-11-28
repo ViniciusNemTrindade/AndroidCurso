@@ -50,29 +50,37 @@ public class ActivityCadastro extends AppCompatActivity implements View.OnClickL
         switch (view.getId()) {
 
             case R.id.btnViewCadastroCadastrar:
+                if (edtViewEmailCadastro.getText().toString().equals("") ||
+                        edtViewUsuarioCadastro.getText().toString().equals("") ||
+                        edtViewSenhaCadastro.getText().toString().equals("")) {
 
-                final ParseUser appUser = new ParseUser();
-                appUser.setEmail(edtViewEmailCadastro.getText().toString());
-                appUser.setUsername(edtViewUsuarioCadastro.getText().toString());
-                appUser.setPassword(edtViewSenhaCadastro.getText().toString());
+                    FancyToast.makeText(ActivityCadastro.this, "Email, Usuario e Senha precisam ser preechidos!"
+                            , FancyToast.LENGTH_LONG, FancyToast.INFO, true).show();
 
-                ProgressDialog progressDialog = new ProgressDialog(this);
-                progressDialog.setMessage("Cadastrando usuaário: " + edtViewUsuarioCadastro.getText().toString());
-                progressDialog.show();
-                appUser.signUpInBackground(new SignUpCallback() {
-                    @Override
-                    public void done(ParseException e) {
-                        if (e == null) {
-                            FancyToast.makeText(ActivityCadastro.this, appUser.getUsername() +
-                                    " , O cadastrofoi realizado com sucesso!", FancyToast.LENGTH_LONG, FancyToast.SUCCESS, true).show();
-                        } else {
-                            FancyToast.makeText(ActivityCadastro.this, "Algo deu errado!" +
-                                    e.getMessage(), FancyToast.LENGTH_LONG, FancyToast.ERROR, true).show();
+                } else {
+                    final ParseUser appUser = new ParseUser();
+                    appUser.setEmail(edtViewEmailCadastro.getText().toString());
+                    appUser.setUsername(edtViewUsuarioCadastro.getText().toString());
+                    appUser.setPassword(edtViewSenhaCadastro.getText().toString());
+
+                    ProgressDialog progressDialog = new ProgressDialog(this);
+                    progressDialog.setMessage("Cadastrando usuaário: " + edtViewUsuarioCadastro.getText().toString());
+                    progressDialog.show();
+                    appUser.signUpInBackground(new SignUpCallback() {
+                        @Override
+                        public void done(ParseException e) {
+                            if (e == null) {
+                                FancyToast.makeText(ActivityCadastro.this, appUser.getUsername() +
+                                        " , O cadastrofoi realizado com sucesso!", FancyToast.LENGTH_LONG, FancyToast.SUCCESS, true).show();
+                            } else {
+                                FancyToast.makeText(ActivityCadastro.this, "Algo deu errado!" +
+                                        e.getMessage(), FancyToast.LENGTH_LONG, FancyToast.ERROR, true).show();
+                            }
+
+                            progressDialog.dismiss();
                         }
-
-                        progressDialog.dismiss();
-                    }
-                });
+                    });
+                }
                 break;
 
             case R.id.btnViewCadastroLogar:
