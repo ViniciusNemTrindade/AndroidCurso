@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -32,6 +34,18 @@ public class ActivityCadastro extends AppCompatActivity implements View.OnClickL
         edtViewEmailCadastro = findViewById(R.id.edtTextEmailCadastro);
         edtViewUsuarioCadastro = findViewById(R.id.edtTextUsuarioCadastro);
         edtViewSenhaCadastro = findViewById(R.id.edtTextSenhaCadastro);
+        edtViewSenhaCadastro.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int keyCode, KeyEvent event) {
+
+                if (keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN) {
+
+                    onClick(btnViewCadastrar);
+                }
+
+                return false;
+            }
+        });
 
         btnViewCadastrar = findViewById(R.id.btnViewCadastroCadastrar);
         btnViewCadastrar.setOnClickListener(this);
@@ -91,5 +105,10 @@ public class ActivityCadastro extends AppCompatActivity implements View.OnClickL
                 break;
 
         }
+    }
+
+    public void rootLayoutPressionado (View view) {
+        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
     }
 }
