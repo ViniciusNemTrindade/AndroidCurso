@@ -86,6 +86,7 @@ public class ActivityCadastro extends AppCompatActivity implements View.OnClickL
                             if (e == null) {
                                 FancyToast.makeText(ActivityCadastro.this, appUser.getUsername() +
                                         " , O cadastrofoi realizado com sucesso!", FancyToast.LENGTH_LONG, FancyToast.SUCCESS, true).show();
+                                    rootLayoutPressionado(edtViewUsuarioCadastro);
                             } else {
                                 FancyToast.makeText(ActivityCadastro.this, "Algo deu errado!" +
                                         e.getMessage(), FancyToast.LENGTH_LONG, FancyToast.ERROR, true).show();
@@ -108,7 +109,14 @@ public class ActivityCadastro extends AppCompatActivity implements View.OnClickL
     }
 
     public void rootLayoutPressionado (View view) {
-        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-        inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+
+        try {
+
+            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
     }
 }
